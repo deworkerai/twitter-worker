@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      dotenv:
-        specifier: ^16.4.5
-        version: 16.4.5
       rsshub:
         specifier: workspace:^
         version: link:packages/RSSHub

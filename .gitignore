@@ -45,3 +45,4 @@ receipt.ts
 copilot
 dist
 .env
+peerKey.json

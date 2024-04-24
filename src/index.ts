@@ -3,7 +3,6 @@ import * as RSSHub from 'rsshub';
 let inited = false;
 export const postInit = async () => {
   if (inited) return;
-
   await RSSHub.init({
     // config
     TWITTER_USERNAME: process.env.TWITTER_USERNAME,

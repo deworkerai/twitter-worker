@@ -24,7 +24,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.4.5",
     "rsshub": "workspace:^",
     "typescript": "^5.4.2"
   },

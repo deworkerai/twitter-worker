@@ -119,8 +119,3 @@ schema:
   entry: ./src/index.ts
   hooks:
     post: postInit
-env:
-  TWITTER_USERNAME: 
-  TWITTER_PASSWORD: 
-  TWITTER_AUTHENTICATION_SECRET: 
-  TWITTER_COOKIE: 

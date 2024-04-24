@@ -6,6 +6,8 @@ git clone --recurse-submodules https://github.com/deworkerai/twitter-worker.git
 pnpm install
 ```
 
+Copy .env.example to .env, and config the .env file.
+
 ## Usage
 
 If you have not registered a peer with this worker, you must [read it](https://github.com/deworkerai/deworker-cli?tab=readme-ov-file#start-a-worker) before running the worker.
