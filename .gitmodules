@@ -1,0 +1,3 @@
+[submodule "packages/RSSHub"]
+	path = packages/RSSHub
+	url = https://github.com/deworkerai/RSSHub.git

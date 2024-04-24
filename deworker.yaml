@@ -1,0 +1,126 @@
+type: worker
+version: 1.0.0
+
+schema:
+  id: worker-02
+  name:
+    human: Twitter Worker
+    model: twitter_worker
+  description:
+    human: Twitter worker, user can get twitter data with this worker.
+    model: This worker can get twitter data, like user home timeline, keyword, trend, tweet details, user media.
+  avatar: https://app.questflow.ai/images/logo.png
+  creator: Questflow
+  skills:
+    - name:
+        human: List timeline
+        model: list_timeline
+      description:
+        human: It can list timeline tweets
+        model: It can list timeline tweets
+      handler: listTimeline
+      requestSchema:
+        type: object
+        properties:
+          id:
+            type: string
+            description: tweet list id
+      responseSchema:
+        type: array
+        items:
+          type: object
+          properties:
+            title:
+              type: string
+              description: tweet tile
+            author:
+              type: string
+              description: tweet author
+            description:
+              type: string
+              description: tweet content
+            pubDate:
+              type: string
+              format: date-time
+              description: tweet publish date
+            link:
+              type: string
+              format: uri
+              description: tweet link
+    - name:
+        human: Get user timeline
+        model: user_timeline
+      description:
+        human: It can list user timeline tweets
+        model: It can list user timeline tweets
+      handler: userTimeline
+      requestSchema:
+        type: object
+        properties:
+          handle:
+            type: string
+            description: usre twitter handle
+      responseSchema:
+        type: array
+        items:
+          type: object
+          properties:
+            title:
+              type: string
+              description: tweet tile
+            author:
+              type: string
+              description: tweet author
+            description:
+              type: string
+              description: tweet content
+            pubDate:
+              type: string
+              format: date-time
+              description: tweet publish date
+            link:
+              type: string
+              format: uri
+              description: tweet link
+    - name:
+        human: Get tweet detail
+        model: tweet_detail
+      description:
+        human: It can query tweet detail
+        model: It can query tweet detail
+      handler: tweetDetail
+      requestSchema:
+        type: object
+        properties:
+          url:
+            type: string
+            description: tweet url
+      responseSchema:
+        type: object
+        properties:
+          title:
+            type: string
+            description: tweet tile
+          author:
+            type: string
+            description: tweet author
+          description:
+            type: string
+            description: tweet content
+          pubDate:
+            type: string
+            format: date-time
+            description: tweet publish date
+          link:
+            type: string
+            format: uri
+            description: tweet link
+
+  entry: ./src/index.ts
+  hooks:
+    post: postInit
+env:
+  TWITTER_USERNAME: 
+  TWITTER_PASSWORD: 
+  TWITTER_AUTHENTICATION_SECRET: 
+  TWITTER_COOKIE: 
