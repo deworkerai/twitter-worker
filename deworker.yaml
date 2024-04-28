@@ -19,6 +19,7 @@ schema:
         human: It can list timeline tweets
         model: It can list timeline tweets
       handler: listTimeline
+      basePoints: 1
       requestSchema:
         type: object
         properties:
@@ -54,6 +55,7 @@ schema:
         human: It can list user timeline tweets
         model: It can list user timeline tweets
       handler: userTimeline
+      basePoints: 1
       requestSchema:
         type: object
         properties:
@@ -89,6 +91,7 @@ schema:
         human: It can query tweet detail
         model: It can query tweet detail
       handler: tweetDetail
+      basePoints: 1
       requestSchema:
         type: object
         properties:
