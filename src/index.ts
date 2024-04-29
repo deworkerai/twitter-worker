@@ -3,6 +3,22 @@ import * as RSSHub from 'rsshub';
 let inited = false;
 export const postInit = async () => {
   if (inited) return;
+
+  if (!process.env.TWITTER_USERNAME) {
+    console.log('TWITTER_USERNAME is not set, please set it in .env file');
+    process.exit(1);
+  }
+
+  if (!process.env.TWITTER_PASSWORD) {
+    console.log('TWITTER_PASSWORD is not set, please set it in .env file');
+    process.exit(1);
+  }
+
+  if (process.env.TWITTER_COOKIE) {
+    console.log('TWITTER_COOKIE is set, will use it for authentication');
+    process.exit(1);
+  }
+
   await RSSHub.init({
     // config
     TWITTER_USERNAME: process.env.TWITTER_USERNAME,
