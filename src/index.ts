@@ -14,8 +14,8 @@ export const postInit = async () => {
     process.exit(1);
   }
 
-  if (process.env.TWITTER_COOKIE) {
-    console.log('TWITTER_COOKIE is set, will use it for authentication');
+  if (!process.env.TWITTER_COOKIE) {
+    console.log('TWITTER_COOKIE is not set, please set it in .env file');
     process.exit(1);
   }
 
@@ -83,6 +83,8 @@ export const tweetDetail = async ({ params }: { params: { url: string } }) => {
   console.log('request args: ', handle, id);
 
   const res = await RSSHub.request(`/twitter/tweet/${handle}/status/${id}/0`);
-
+  if (res?.error) {
+    return null;
+  }
   return res;
 };
