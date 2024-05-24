@@ -65,14 +65,15 @@ export const userTimeline = async ({
 }: {
   params: { handle: string; routeParams?: string };
 }) => {
-  const { handle, routeParams = 'showAuthorInTitle=false' } = params;
+  const { handle, routeParams = 'showAuthorInTitle=false&exclude_replies=1&count=3' } = params;
   console.log('request args: ', handle, routeParams);
 
   const res = await RSSHub.request(`/twitter/user/${handle}/${routeParams}?`);
 
-  console.log('[user_timeline]', res);
+  const rtn = { ...res, item: res.item.slice(0, 3) };
+  console.log('[user_timeline]', rtn);
 
-  return res;
+  return rtn;
 };
 
 export const tweetDetail = async ({ params }: { params: { url: string } }) => {
