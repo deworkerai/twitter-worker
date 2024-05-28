@@ -42,8 +42,10 @@ export const listTimeline = async ({
   const { id, routeParams = 'showAuthorInTitle=false' } = params;
   console.log('request args: ', id, routeParams);
   const res = await RSSHub.request(`/twitter/list/${id}/${routeParams}?`);
-  console.log('[list_timeline]', res);
-  return res;
+  const rtn = { ...res, item: res.item.slice(0, 3) };
+  console.log('[list_timeline]', rtn);
+
+  return rtn;
 };
 
 export const homeTimeline = async (
@@ -65,7 +67,7 @@ export const userTimeline = async ({
 }: {
   params: { handle: string; routeParams?: string };
 }) => {
-  const { handle, routeParams = 'showAuthorInTitle=false&exclude_replies=1&count=3' } = params;
+  const { handle, routeParams = 'showAuthorInTitle=false&exclude_replies=1' } = params;
   console.log('request args: ', handle, routeParams);
 
   const res = await RSSHub.request(`/twitter/user/${handle}/${routeParams}?`);
@@ -83,9 +85,10 @@ export const tweetDetail = async ({ params }: { params: { url: string } }) => {
   const id = parts[3];
   console.log('request args: ', handle, id);
 
-  const res = await RSSHub.request(`/twitter/tweet/${handle}/status/${id}/0`);
+  const res = await RSSHub.request(`/twitter/tweet/${handle}/status/${id}?original=true`);
   if (res?.error) {
     return null;
   }
+  console.log('[tweet_detail]', res);
   return res;
 };
